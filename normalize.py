@@ -2,11 +2,12 @@
 #########################################################################################
 # author:       Yerboalt Khassanov
 # affiliation:  Nanyang Technological University
-# date:         June 2015
+# date:         June 2016
 #########################################################################################
 # Code description ######################################################################
 #
-# This normalization code is optimized for TDT2(LDC2001T57) corpus
+# This normalization code is optimized for 1-Billion-word-language-modeling-benchmark corpus
+# https://github.com/ciprian-chelba/1-billion-word-language-modeling-benchmark
 # 
 #########################################################################################
 import re, os, json, pdb, nltk
