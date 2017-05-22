@@ -12,11 +12,10 @@ def run(command):
     output = subprocess.check_output(command, shell=True)
     return output
 
-input_folder        = '/home/RT11/khassan/corpora/1-billion-word-language-modeling-benchmark-r13output/training-monolingual.tokenized.shuffled'   # input folder
-output_folder       = '/home/RT11/khassan/corpora/1-billion-word-language-modeling-benchmark-r13output/training-monolingual.tokenized.shuffled.normalized'   # output folder
-#output_folder_docs  = os.path.dirname(wiki_folder)+'/cleanWiki_docs.bz2'    # output folder
+input_folder        = '/home/khassan/corpora/1-billion-word-language-modeling-benchmark-r13output/training-monolingual.tokenized.shuffled'
+output_folder       = '/home/khassan/corpora/1-billion-word-language-modeling-benchmark-r13output/training-monolingual.tokenized.shuffled.normalized'
 min_doc_size        = 0        # minimum number of tokens in document
-min_sent_size       = 0         # minimum number of tokens in sentence
+min_sent_size       = 0        # minimum number of tokens in sentence
 
 def cleanText(text, acronymFile):
     #Convert text into lowercase
@@ -142,7 +141,7 @@ def cleanText(text, acronymFile):
     text    = re.sub('(\'[^s]| \'+|^\'+|\'+$)',' ',text) # one more time remove quotes
     text    = re.sub(' +',' ',text) #replace multiple spaces with single space
 
-    #Remove multiple periods, eg: '...'=> ''
+    #Replace multiple periods, eg: '...'=> '.'
     text    = re.sub('\.\.+','.',text)
     text    = re.sub(' +',' ',text)     #replace multiple spaces with single space
 
@@ -198,8 +197,6 @@ if __name__ == '__main__':
     if not os.path.exists(output_folder):
         os.system('mkdir '+output_folder)
 
-    #output_file         = bz2.BZ2File(output_folder, 'wb')
-    #output_file_docs    = bz2.BZ2File(output_folder_docs, 'wb')
     input_file_list     = run('ls '+input_folder).split()
     for file_name in input_file_list:
         print("file name: "+file_name)
